@@ -247,18 +247,13 @@ int16_t sf06_lf_enter_sleep() {
 }
 
 int16_t sf06_lf_exit_sleep() {
-    int16_t local_error = NO_ERROR;
     uint8_t local_buffer[2] = {0};
     uint16_t local_offset = 0;
     local_offset =
         sensirion_i2c_add_command_to_buffer(local_buffer, local_offset, 0x0);
-    local_error =
-        sensirion_i2c_write_data(_i2c_address, local_buffer, local_offset);
-    if (local_error != NO_ERROR) {
-        return local_error;
-    }
+    sensirion_i2c_write_data(_i2c_address, local_buffer, local_offset);
     sensirion_i2c_hal_sleep_usec(25 * 1000);
-    return local_error;
+    return NO_ERROR;
 }
 
 int16_t sf06_lf_read_product_identifier_prepare() {
