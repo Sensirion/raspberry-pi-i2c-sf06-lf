@@ -39,7 +39,7 @@
 #include "sensirion_i2c_hal.h"
 #include "sf06_lf_i2c.h"
 #include <stdio.h>  // printf
-//
+
 // define replacement for sleep function
 #define sensirion_hal_sleep_us sensirion_i2c_hal_sleep_usec
 
