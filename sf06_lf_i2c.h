@@ -64,8 +64,6 @@ extern "C" {
 #define LD20_2600B_ADDR_A 0x08
 #define SF06_LF_I2C_ADDRESS 0x08
 
-// define enum with command ids
-
 typedef enum {
     START_H2O_CONTINUOUS_MEASUREMENT_CMD_ID = 0x3608,
     START_IPA_CONTINUOUS_MEASUREMENT_CMD_ID = 0x3615,
@@ -94,8 +92,6 @@ typedef enum {
  *
  */
 void init_driver(uint8_t i2c_address);
-
-// conversion functions
 
 /**
  * @brief signal_flow
@@ -140,8 +136,6 @@ float signal_delta_temperature(int16_t raw_delta_temperature);
  */
 int16_t signal_thermal_conductivity(int16_t raw_thermal_conductivity);
 
-// user-api functions
-
 /**
  * @brief read measured data
  *
@@ -172,8 +166,8 @@ sf06_lf_read_measurement_data(inv_flow_scale_factors inv_flow_scale_factor,
  * @brief sf06_lf_read_thermal_conductivity_measurement_data
  *
  * Reads single thermal conductivity measurement after a measurement has been
- * started with *start_single_thermal_conductivity_measurement*. Supported by
- * products: SLF3C-1300F, SLF3S-4000B
+ * started with *start_single_thermal_conductivity_measurement*.
+ * Supported by products: SLF3C-1300F, SLF3S-4000B
  *
  * @param[out] a_thermal_conductivity thermal conductivity in arbitary unit
  * @param[out] a_temperature temperature in degree celsius
@@ -202,8 +196,6 @@ int16_t sf06_lf_read_thermal_conductivity_measurement_data(
 int16_t sf06_lf_read_product_identifier(uint32_t* product_identifier,
                                         uint8_t* serial_number,
                                         uint16_t serial_number_size);
-
-// low-level-api functions
 
 /**
  * @brief Start continuous measurement mode for H₂O
@@ -247,14 +239,19 @@ int16_t sf06_lf_start_ipa_continuous_measurement();
  * continuously measures and updates the measurement results. New results (flow,
  * temperature, and signaling flags) can be read continuously with this command.
  *
- * @param[out] raw_flow For SLF3C-1300F, SLF3S-1300F convert to ml/min by
- * applying: flow = raw_flow / 500 For SLF3S-4000B convert to ml/min by
- * applying: flow = raw_flow / 32 For SLF3S-0600F convert to μl/min by applying:
- * flow = raw_flow / 10 For LD20-0600L convert to ml/h by applying: flow =
- * raw_flow / 1200 For LD20-2600B convert to ml/h by applying: flow = raw_flow /
- * 20
- * @param[out] raw_temperature Convert to degrees celsius by temperature =
- * raw_temperature / 200
+ * @param[out] raw_flow
+ * For SLF3C-1300F, SLF3S-1300F convert to ml/min by applying:
+ * flow = raw_flow / 500
+ * For SLF3S-4000B convert to ml/min by applying:
+ * flow = raw_flow / 32
+ * For SLF3S-0600F convert to μl/min by applying:
+ * flow = raw_flow / 10
+ * For LD20-0600L convert to ml/h by applying:
+ * flow = raw_flow / 1200
+ * For LD20-2600B convert to ml/h by applying:
+ * flow = raw_flow / 20
+ * @param[out] raw_temperature Convert to degrees celsius by
+ * temperature = raw_temperature / 200
  * @param[out] signaling_flags Gives additional information about the
  * measurement status. Refer to the sensor data sheet for detailed information.
  * Following flags are defined: Air-in-Line flag (Bit 0), High Flow flag (Bit

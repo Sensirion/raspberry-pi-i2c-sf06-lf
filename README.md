@@ -5,8 +5,8 @@ using the provided code.
 
 <center><img src="images/sensor_SLF3C_1300F.png" width="300px"></center>
 
-Click [here](https://sensirion.com/products/product-categories/liquid-flow/
-) to learn more about the Sensirion SF06-LF sensor family.
+Click [here](https://sensirion.com/products/product-categories/liquid-flow/) 
+to learn more about the Sensirion SF06-LF sensor family.
 
 
 
@@ -28,8 +28,8 @@ support it are listed in the API description.
    - LD20-0600L
 
    - LD20-2600B
-The following instructions and examples use a *SLF3C-1300F*.Click [here](https://sensirion.com/media/documents/F3931025/621F8CCE/Sensirion_Liquid_Flow_Meters_SLF3C-1300F_Datasheet.pdf
-) to download the datasheet.
+
+The following instructions and examples use a *SLF3C-1300F*. Click [here](https://sensirion.com/media/documents/F3931025/621F8CCE/Sensirion_Liquid_Flow_Meters_SLF3C-1300F_Datasheet.pdf) to download the datasheet.
 
 
 ## Setup Guide
@@ -72,8 +72,7 @@ Use the following pins to connect your SF06-LF:
 - Download the SF06-LF driver from [Github](https://github.com/Sensirion/raspberry-pi-i2c-sf06-lf) and extract the `.zip` on your Raspberry Pi
 - The provided example is working with a SLF3C-1300F, I2C address 0x08. In order to 
   use the code with another product you need to change the used I2C address in the call init_driver(ADDRESS) in
-  sf06_lf_i2c_example_usage.c. The list of supported I2C-addresses is found in the header 
-  sf06_lf_i2c.h.
+  sf06_lf_i2c_example_usage.c. The list of supported I2C-addresses is found in the header sf06_lf_i2c.h.
 
 - Compile the driver
     1. Open a [terminal](https://www.raspberrypi.com/documentation/computers/using_linux.html#terminal)

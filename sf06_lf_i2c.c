@@ -43,8 +43,6 @@
 
 static uint8_t _i2c_address;
 
-// internal state
-
 void init_driver(uint8_t i2c_address) {
     _i2c_address = i2c_address;
 }
