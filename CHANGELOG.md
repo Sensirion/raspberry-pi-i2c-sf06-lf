@@ -7,7 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.1.0] - 2023-10-17
+renamings in sf06_lf_i2c: 
+- init_driver() changed to sf06_lf_init()
+- naming of i2c address defines changed
+
+## [0.1.0] - 2022-03-30
 
 Initial release
 
