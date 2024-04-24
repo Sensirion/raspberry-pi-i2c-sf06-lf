@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- example how to change I2C address for SLF3x sensors
+
+### Changed
+
 renamings in sf06_lf_i2c: 
 - init_driver() changed to sf06_lf_init()
 - naming of i2c address defines changed

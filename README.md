@@ -65,7 +65,7 @@ Use the following pins to connect your SF06-LF:
 - [Enable the I²C interface in the raspi-config](https://www.raspberrypi.org/documentation/configuration/raspi-config.md)
 - Download the SF06-LF driver from [Github](https://github.com/Sensirion/raspberry-pi-i2c-sf06-lf) and extract the `.zip` on your Raspberry Pi
 - Connect the SF06-LF sensor as explained in the [section above](#connect-the-sensor)
-- - The provided example is working with a SLF3C-1300F, I²C address 0x08.
+- The provided example is working with a SLF3C-1300F, I²C address 0x08.
   In order to use the code with another product or I²C address you need to change it in the call sf06_lf_init(ADDRESS) in
   `sf06_lf_i2c_example_usage.c`. The list of supported I²C-addresses is found in the header 
   `sf06_lf_i2c.h`.
