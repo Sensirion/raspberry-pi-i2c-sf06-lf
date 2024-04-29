@@ -68,7 +68,7 @@ cppcheck:
   script:
     - cppcheck --std=c89 --language=c --error-exitcode=1 --enable=warning,style,performance,portability --suppress=unreadVariable -i sample-implementations/ .
 
-build:
+build-example-usage:
   stage: build
   image:
     name: sensirion/embedded-ci:2.4.0
@@ -77,7 +77,20 @@ build:
     - cd example-usage
     - make
 
-
+build-i2c-address-change:
+  stage: build
+  image:
+    name: sensirion/embedded-ci:2.4.0
+  tags: [linux, docker]
+  script:
+    - cd example-i2c-address-change
+    - wget https://github.com/joan2937/pigpio/archive/refs/tags/v79.zip
+    - unzip v79.zip
+    - cd pigpio-79
+    - make
+    - make install
+    - cd ..
+    - make
 
 TODO_check:
   stage: validate
