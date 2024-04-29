@@ -61,7 +61,7 @@ typedef enum {
     EXIT_SLEEP_CMD_ID = 0x0,
     READ_PRODUCT_IDENTIFIER_PREPARE_CMD_ID = 0x367c,
     READ_PRODUCT_IDENTIFIER_CMD_ID = 0xe102,
-} cmd_id_t;
+} sf06_lf_cmd_id_t;
 
 typedef enum {
     INV_FLOW_SCALE_FACTORS_SLF3C_1300F = 500,
@@ -70,7 +70,7 @@ typedef enum {
     INV_FLOW_SCALE_FACTORS_SLF3S_0600F = 10,
     INV_FLOW_SCALE_FACTORS_LD20_0600L = 1200,
     INV_FLOW_SCALE_FACTORS_LD20_2600B = 20,
-} inv_flow_scale_factors;
+} sf06_lf_inv_flow_scale_factors;
 
 /**
  * @brief Initialize i2c address of driver
@@ -88,13 +88,13 @@ void sf06_lf_init(uint8_t i2c_address);
  * value
  *
  * @return As the flow scaling differs for specific sensor types the scaling
- * factor must be passed as an argument. See the enum *inv_flow_scale_factors*
- * for scaling factors of supported sensors. The raw value is converted by: flow
- * = raw_flow / inv_flow_scale_factor Resulting unit depends on your specific
- * sensor type.
+ * factor must be passed as an argument. See the enum
+ * *sf06_lf_inv_flow_scale_factors* for scaling factors of supported sensors.
+ * The raw value is converted by: flow = raw_flow / inv_flow_scale_factor
+ * Resulting unit depends on your specific sensor type.
  */
 float signal_flow(int16_t raw_flow,
-                  inv_flow_scale_factors inv_flow_scale_factor);
+                  sf06_lf_inv_flow_scale_factors inv_flow_scale_factor);
 
 /**
  * @brief signal_temperature
@@ -131,23 +131,22 @@ int16_t signal_thermal_conductivity(int16_t raw_thermal_conductivity);
  * depends on the specific sensor. The scaling factor is passed as an argument
  * and the raw flow value is converted by applying: flow = raw_flow /
  * inv_flow_scale_factor The scaling factors for the supported sensor are
- * defined in enum *inv_flow_scale_factors*
+ * defined in enum *sf06_lf_inv_flow_scale_factors*
  *
  * @param[in] inv_flow_scale_factor used to convert raw flow value
  * @param[out] a_flow As the flow scaling differs for specific sensor types the
  * scaling factor must be passed as an argument. See the enum
- * *inv_flow_scale_factors* for scaling factors of supported sensors. The raw
- * value is converted by: flow = raw_flow / inv_flow_scale_factor Resulting unit
- * depends on your specific sensor type.
+ * *sf06_lf_inv_flow_scale_factors* for scaling factors of supported sensors.
+ * The raw value is converted by: flow = raw_flow / inv_flow_scale_factor
+ * Resulting unit depends on your specific sensor type.
  * @param[out] a_temperature temperature in degree celsius
  * @param[out] a_signaling_flags
  *
  * @return error_code 0 on success, an error code otherwise.
  */
-int16_t
-sf06_lf_read_measurement_data(inv_flow_scale_factors inv_flow_scale_factor,
-                              float* a_flow, float* a_temperature,
-                              uint16_t* a_signaling_flags);
+int16_t sf06_lf_read_measurement_data(
+    sf06_lf_inv_flow_scale_factors inv_flow_scale_factor, float* a_flow,
+    float* a_temperature, uint16_t* a_signaling_flags);
 
 /**
  * @brief sf06_lf_read_thermal_conductivity_measurement_data

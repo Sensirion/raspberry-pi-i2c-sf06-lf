@@ -52,7 +52,7 @@ void sf06_lf_init(uint8_t i2c_address) {
 }
 
 float signal_flow(int16_t raw_flow,
-                  inv_flow_scale_factors inv_flow_scale_factor) {
+                  sf06_lf_inv_flow_scale_factors inv_flow_scale_factor) {
     float flow = 0.0;
     flow = (float)(raw_flow);
     flow = flow / (int)(inv_flow_scale_factor);
@@ -77,10 +77,9 @@ int16_t signal_thermal_conductivity(int16_t raw_thermal_conductivity) {
     return thermal_conductivity;
 }
 
-int16_t
-sf06_lf_read_measurement_data(inv_flow_scale_factors inv_flow_scale_factor,
-                              float* a_flow, float* a_temperature,
-                              uint16_t* a_signaling_flags) {
+int16_t sf06_lf_read_measurement_data(
+    sf06_lf_inv_flow_scale_factors inv_flow_scale_factor, float* a_flow,
+    float* a_temperature, uint16_t* a_signaling_flags) {
     int16_t raw_flow = 0;
     int16_t raw_temp = 0;
     uint16_t signaling_flags = 0u;
