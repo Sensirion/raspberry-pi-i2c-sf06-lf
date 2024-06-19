@@ -87,7 +87,7 @@ sudo make install
 
 ## Limitations
 
-- The feature is only supported by SLF3x sensors with a serial number above 22xxxxxxxx.
+- The feature is only supported by SLF3x sensors with a serial number above 23xxxxxxxx.
 - After a soft reset (specific I2C command) or hard reset (power cycle) the I²C address is set back to the default address 0x08.
 
 ## Further readings
